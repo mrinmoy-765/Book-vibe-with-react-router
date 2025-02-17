@@ -12,6 +12,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import BookDetail from './components/BookDetail/BookDetail.jsx'
 
 
 
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: 'books/:bookId',
+        element: <BookDetail></BookDetail>
       },
       {
         path: 'dashboard',
