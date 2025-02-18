@@ -1,10 +1,10 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import Root from './components/Root/Root.jsx'
-import ErrorPage from './components/ErrorPage/ErrorPage.jsx'
-import Home from './components/Home/Home.jsx'
-import Dashboard from './components/Dashboard/Dashboard.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import Root from "./components/Root/Root.jsx";
+import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
+import Home from "./components/Home/Home.jsx";
+import Dashboard from "./components/Dashboard/Dashboard.jsx";
 
 import {
   createBrowserRouter,
@@ -12,9 +12,8 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import BookDetail from './components/BookDetail/BookDetail.jsx'
-
-
+import BookDetail from "./components/BookDetail/BookDetail.jsx";
+import ListedBooks from "./components/ListedBooks/ListedBooks.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,26 +22,29 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        path: '/',
-        element: <Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path: 'books/:bookId',
+        path: "books/:bookId",
         element: <BookDetail></BookDetail>,
-        loader: () => fetch('/booksData.json')
+        loader: () => fetch("/booksData.json"),
       },
       {
-        path: 'dashboard',
-        element: <Dashboard></Dashboard>
-      }
-    ]
-    
+        path: "listedBooks",
+        element: <ListedBooks></ListedBooks>,
+        loader: () => fetch("/booksData.json"),
+      },
+      {
+        path: "dashboard",
+        element: <Dashboard></Dashboard>,
+      },
+    ],
   },
-  
 ]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-     <RouterProvider router={router} />
-  </StrictMode>,
-)
+    <RouterProvider router={router} />
+  </StrictMode>
+);
